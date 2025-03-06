@@ -27,7 +27,7 @@ Ultimately, what worked was to upload the csv file into a table of its own using
 
 SQL statement creating a sales table and inserting date:
 
-'''
+  ```
 Create Sales Table
 CREATE TABLE Sales (
     sales_id INT PRIMARY KEY,
@@ -42,11 +42,11 @@ CREATE TABLE Sales (
 
 INSERT INTO sales(sales_id, product_id, customer_id, products_sold, revenue) 
 SELECT sales_id, product_id, customer_id, products_sold, revenue FROM supplychaindata;
-'''
+  ```
 
 2) Though this is a mock data set, some numbers like; product_lead_time, order_quantities, revenue, and other columns did not make sense and were updated to reflect real-time data
 
-'''
+  ```
 SELECT * FROM supplychain.suppliers;
 
 -- Update product_lead_time to a random number between 15 and 30
@@ -60,12 +60,12 @@ SELECT * FROM supplychain.orders;
 UPDATE Orders
 Set order_quantities = FLOOR (11 + RAND() * (11 + 1))
 Where order_quantities BETWEEN 1 AND 10 AND product_id IS NOT NULL; 
-'''
+  ```
 
 3) Do XYZ and ABC analysis using SQL and create the Product Analysis table
 
-'''
-ABC/XYZ analysis use CTE
+  ```
+ABC/XYZ analysis uses CTE
 
 -- Step 1: Calculate Annual Consumption Value
 WITH AnnualConsumption AS (
@@ -144,11 +144,11 @@ FOREIGN KEY (product_id) REFERENCES products(product_id)
 
 INSERT INTO product_analysis (category, product_id, annual_consumption_value, abc_category, xyz_category, sales_rank)
 VALUES ('Top 10 Products', 6, 87360, 'A', 'X', 1);
-'''
+  ```
 
 4) Similar to Product Analysis, do the Supplier Analysis 
 
-'''
+  ```
 -- Normalize supplier metrics
 CREATE TEMPORARY TABLE normalized_suppliers AS 
 SELECT 
@@ -216,11 +216,11 @@ ADD category VARCHAR(255);
 
 INSERT INTO suppliers_analysis (product_id, suppliers_id, composite_score, ranking, category)
 VALUES ('7', '3', '0.8761000', '1', 'Top 5 Suppliers');
-'''
+  ```
 
 5) Measure the COGS, Revenue Per Product, GMROI
 
-'''
+  ```
 COGS
 ALTER TABLE suppliers
 ADD COGS INT;
@@ -242,7 +242,7 @@ UPDATE sales
 JOIN suppliers ON sales.product_id = suppliers.product_id
 SET sales.gross_profit = sales.revenue - suppliers.cogs
 WHERE suppliers.cogs IS NOT NULL;
-'''
+  ```
 
 ![Screen Shot 2025-03-05 at 9 09 38 PM](https://github.com/UserDna95/Supply-Chain-Dashboard-2/blob/main/supplychaindashboard1.png)
 
@@ -251,7 +251,7 @@ Model data in Power BI
 
 1) Created new tables such as Date Table and SafetyStock Table to calculate Reorder Point and Safety Stock
 
-'''
+  ```
 date table = 
 ADDCOLUMNS (
     CALENDAR (DATE(2022, 1, 1), DATE(2024, 12, 31)),
@@ -262,9 +262,9 @@ ADDCOLUMNS (
     "Day of Week", FORMAT([Date], "dddd"),
     "Week Number", WEEKNUM([Date])
 )
-'''
+  ```
 
-'''
+  ```
  SafetyStockTable = 
 ADDCOLUMNS (
     'supplychain orders',
@@ -297,7 +297,7 @@ ADDCOLUMNS (
         VAR Z = 1.65
         RETURN Z * SQRT((AvgLeadTimeDemand * LeadTimeVar) + (AvgDemandVar * RELATED('supplychain suppliers'[total_lead_time])))
 )
-'''
+  ```
 
 ![Screen Shot 2025-03-05 at 9 09 38 PM](https://github.com/UserDna95/Supply-Chain-Dashboard-2/blob/main/2025-03-05%20(10).png)
 
