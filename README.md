@@ -5,8 +5,7 @@ Use Kaggle set to create a supply chain dashboard.
 
 https://www.kaggle.com/datasets/harshsingh2209/supply-chain-analysis
 
-Step 1) 
-Clean data in Excel:
+Step 1) Clean data in Excel:
 
 1) Handle null values with zero
 
@@ -16,8 +15,7 @@ Clean data in Excel:
 
 ![Screen Shot 2025-03-05 at 9 09 38 PM](https://github.com/UserDna95/Supply-Chain-Dashboard-2/blob/main/2025-03-05%20(12).png)
 
-Step 2)
-Upload and clean data in SQL
+Step 2) Upload and clean data in SQL
 
 1) Attempted to insert data from the csv file into an empty table structure, but even after changing the directory and location of the file, the “secure-priv-authorization” did not accept it. 
 
@@ -44,7 +42,7 @@ INSERT INTO sales(sales_id, product_id, customer_id, products_sold, revenue)
 SELECT sales_id, product_id, customer_id, products_sold, revenue FROM supplychaindata;
   ```
 
-2) Though this is a mock data set, some numbers like; product_lead_time, order_quantities, revenue, and other columns did not make sense and were updated to reflect real-time data
+2) Though this is a mock data set, some numbers like product_lead_time, order_quantities, revenue, and other columns did not make sense and were updated to reflect real-time data
 
   ```
 SELECT * FROM supplychain.suppliers;
@@ -246,8 +244,7 @@ WHERE suppliers.cogs IS NOT NULL;
 
 ![Screen Shot 2025-03-05 at 9 09 38 PM](https://github.com/UserDna95/Supply-Chain-Dashboard-2/blob/main/supplychaindashboard1.png)
 
-Step 3)
-Model data in Power BI
+Step 3) Model data in Power BI
 
 1) Created new tables such as Date Table and SafetyStock Table to calculate Reorder Point and Safety Stock
 
@@ -299,18 +296,21 @@ ADDCOLUMNS (
 )
   ```
 
+  ```
+Reorder Point = 
+    [Average Daily Usage] * [Total Lead Time] + [Safety Stock]
+  ```
+
 ![Screen Shot 2025-03-05 at 9 09 38 PM](https://github.com/UserDna95/Supply-Chain-Dashboard-2/blob/main/2025-03-05%20(10).png)
 
 
-Step 4) 
-Dashboard 
+Step 4) Dashboard 
 
 Key Insights:
 - Mumbai, Kolkata, and Chennai have the top suppliers
 - For Top 10 products, the Reorder Point is incredibly high in comparison to the safety stock due to the high lead times and the high variance in daily demand
 - All top-ranked products are high-value items with high predictability, which is a great indicator of a smooth operating supply chain 
 - The Supplier and Customer flow use Sankey Charts to show the general flow of which product_type belongs to which category, and which supplier transportation mode and route falls into which category
-
 
 
 ![Screen Shot 2025-03-05 at 9 09 38 PM](https://github.com/UserDna95/Supply-Chain-Dashboard-2/blob/main/2025-03-05%20(13).png)
