@@ -305,7 +305,7 @@ Step 4) Dashboard
 Key Insights:
 - Mumbai, Kolkata, and Chennai have the top suppliers
 - For Top 10 products, the Reorder Point is incredibly high in comparison to the safety stock due to the high lead times and the high variance in daily demand
-- All top-ranked products are high-value items with high predictability, which is a great indicator of a smooth operating supply chain 
+- All top-ranked products are high-value items with high predictability, which can be a great indicator of a smooth operating supply chain 
 - The Supplier and Customer flow use Sankey Charts to show the general flow of which product_type belongs to which category, and which supplier transportation mode and route falls into which category
 
 
