@@ -5,7 +5,7 @@ Use Kaggle dataset to create a supply chain dashboard.
 
 https://www.kaggle.com/datasets/harshsingh2209/supply-chain-analysis
 
-Step 1) Clean data in Excel:
+Step 1) Clean data in Excel
 
 1) Handle null values with zero
 
@@ -17,7 +17,7 @@ Step 1) Clean data in Excel:
 
 Step 2) Upload and clean data in SQL
 
-1) Attempted to insert data from the csv file into an empty table structure, but even after changing the directory and location of the file, the “secure-priv-authorization” did not accept it. Then attempted to load the LOCAL file using a query, but a connection between local system and MySQL was not established. Ultimately, what worked was to upload the csv file into a table of its own using Data Import Wizard and then use the INSERT INTO statement to insert data from the csv file into the empty table structure. 
+1) Attempted to insert data from the csv file into an empty table structure, but even after changing the directory and location of the file, the “secure-priv-authorization” did not accept it. Then, I attempted to load the LOCAL file using a query, but a connection between the local system and MySQL was not established. Ultimately, what worked was to upload the csv file into a table of its own using Data Import Wizard and then use the INSERT INTO statement to insert data from the csv file into the empty table structure. 
 
 SQL statement creating a sales table and inserting date:
 
