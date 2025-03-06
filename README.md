@@ -1,7 +1,7 @@
 # Supply-Chain-Dashboard 2
 
 Problem Statement: 
-Use Kaggle set to create a supply chain dashboard. 
+Use Kaggle dataset to create a supply chain dashboard. 
 
 https://www.kaggle.com/datasets/harshsingh2209/supply-chain-analysis
 
